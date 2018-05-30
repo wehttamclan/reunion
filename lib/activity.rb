@@ -5,8 +5,7 @@ class Activity
     @name      = name
     @base_cost = base_cost
     @cost_per_participant = cost_per_participant
-    @participants     = Hash.new
-    # @who_owes_what = Hash.new
+    @participants = Hash.new
   end
 
   def add_participant(name, amount_paid)

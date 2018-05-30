@@ -29,4 +29,19 @@ class ReunionTest < Minitest::Test
     @high_school_reunion.add_activity(@darts)
     assert_equal [@bowling, @darts], @high_school_reunion.activities
   end
+
+  def test_reunion_calculates_total_cost_for_all_activities
+    @family_reunion.add_activity(@hiking)
+    assert_equal 0, @family_reunion.total_cost
+
+    @high_school_reunion.add_activity(@bowling)
+    @high_school_reunion.add_activity(@darts)
+    assert_equal 15, @high_school_reunion.total_cost
+
+    @bowling.add_participant('Bart', 0)
+    @bowling.add_participant('Lisa', 10)
+    @darts.add_participant('Moe', 1)
+    @darts.add_participant('Barney', 1)
+    assert_equal 19, @high_school_reunion.total_cost
+  end
 end
